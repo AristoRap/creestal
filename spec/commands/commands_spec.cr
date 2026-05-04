@@ -44,7 +44,7 @@ end
 describe Creestal::Commands do
   it "registers new, build, and serve on CLI root" do
     root = Creestal::CLI.root
-    root.subcommands.keys.sort.should eq(["build", "new", "serve"])
+    root.subcommands.keys.sort.should eq(["b", "build", "new", "s", "serve", "srv"])
   end
 
   it "new command creates a scaffolded project" do
