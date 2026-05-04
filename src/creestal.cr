@@ -6,7 +6,7 @@ require "./cli"
 
 # TODO: Write documentation for `Creestal`
 module Creestal
-  VERSION = "0.1.0"
+  VERSION = "0.1.1"
 
   def self.run(argv : Array(String) = ARGV)
     CLI.run(argv)
