@@ -1,5 +1,8 @@
 # Creestal
 
+[![CI](https://github.com/AristoRap/creestal/actions/workflows/ci.yml/badge.svg)](https://github.com/AristoRap/creestal/actions/workflows/ci.yml)
+[![Release](https://github.com/AristoRap/creestal/actions/workflows/release.yml/badge.svg)](https://github.com/AristoRap/creestal/actions/workflows/release.yml)
+
 Creestal is a static site generator written in Crystal.
 
 It builds Markdown pages into HTML using Crinja layouts and partials, can serve the generated site locally, and supports incremental rebuilds while watching for changes.
@@ -335,6 +338,19 @@ Build the binary:
 ```sh
 shards build
 ```
+
+## CI/CD
+
+GitHub Actions workflows are included:
+
+- CI: runs on pushes to `main`/`master` and on pull requests
+  - installs dependencies
+  - builds the project
+  - runs `crystal spec`
+- Release CD: runs on tags matching `v*` (for example `v0.1.0`) and can be triggered manually
+  - builds a release binary
+  - packages `bin/creestal` as `creestal-linux-amd64.tar.gz`
+  - publishes the artifact to the GitHub Release for that tag
 
 ## Status
 
