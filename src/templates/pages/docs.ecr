@@ -1,0 +1,87 @@
+---
+title: Docs
+date: <%= Time.local.to_s("%Y-%m-%d") %>
+layout: base
+---
+
+# Docs
+
+## CLI reference
+
+| Command | Description |
+|---|---|
+| `creestal new <name>` | Scaffold a new site |
+| `creestal build` | Build the site into `out/` |
+| `creestal serve` | Serve `out/` locally with live-reload |
+| `creestal serve --port 8080` | Serve on a custom port |
+
+## Layouts
+
+A layout is an HTML file in `layouts/`. It wraps every page that references it.
+
+The page's rendered content is available as `page.content`:
+
+```jinja
+<main>{{ page.content }}</main>
+```
+
+Open `layouts/base.html` to see this in action.
+
+## Partials
+
+A partial is an HTML file in `partials/`. Include partials directly from your layout:
+
+```jinja
+{% include "header.html" %}
+```
+
+Included partials can access the same render context (`page`, `site`, and `active_page`) as the parent template.
+
+## Active page
+
+Views also receive `active_page`, which is the current page source path without extension (for example: `index`, `about`, `blog/first-post`).
+
+Use `is_active(current, value)` to conditionally return any string value.
+
+```jinja
+<a class="{{ is_active("docs", "is-active") }}" href="/docs">Docs</a>
+```
+
+## Breadcrumbs
+
+The `site` context includes page-aware breadcrumbs at `site.breadcrumbs`.
+
+```jinja
+{% if site.breadcrumbs|length > 1 %}
+	<ol class="breadcrumb">
+		{% for crumb in site.breadcrumbs %}
+			{% if crumb.output_path == page.output_path %}
+				<li class="breadcrumb-item"><span>{{ crumb.title }}</span></li>
+			{% else %}
+				<li class="breadcrumb-item"><a href="{{ crumb.url }}">{{ crumb.title }}</a></li>
+			{% endif %}
+		{% endfor %}
+	</ol>
+{% endif %}
+```
+
+## Config reference
+
+`config.yml` at the root of your site:
+
+```yaml
+site: <%= @ctx.app_name %>          # site title
+source: <%= @ctx.source %>          # directory containing pages/, layouts/, etc.
+output: out                         # where the built site is written
+default_layout: base                # layout used when none is specified in frontmatter
+```
+
+## Adding pages
+
+Drop a Markdown file anywhere inside `pages/`. The output path mirrors the source path:
+
+```
+pages/blog/my-post.md  →  out/blog/my-post.html
+```
+
+→ Continue to [Blog → First Post](/blog/first-post)

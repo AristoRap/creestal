@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- BootstrapCSS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <!-- Yours -->
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <title>{{ page.title }}</title>
+  </head>
+  <body>
+    {% include "header.html" %}
+
+    {% if site.breadcrumbs|length > 1 %}
+      <nav aria-label="breadcrumb" class="container mt-3">
+        <ol class="breadcrumb">
+          {% for crumb in site.breadcrumbs %}
+            <li class="breadcrumb-item">
+              {% if crumb.output_path == page.output_path %}
+                <span aria-current="page">{{ crumb.title }}</span>
+              {% else %}
+                <a href="{{ crumb.url }}">{{ crumb.title }}</a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      </nav>
+    {% endif %}
+
+    <main>{{ page.content }}</main>
+
+    {% include "footer.html" %}
+    <script defer src="/assets/js/theme_controller.js"></script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+---
+title: Changelog
+date: <%= Time.local.to_s("%Y-%m-%d") %>
+layout: base
+---
+
+# Changelog
+
+This page doubles as a frontmatter reference. Every supported field is listed below.
+
+## Frontmatter reference
+
+```yaml
+---
+title: My Page          # (required) page title, available as page.title in templates
+date: 2026-01-01        # (optional) publication date, ISO 8601
+tags: [one, two]        # (optional) list of tags
+draft: true             # (optional) exclude from build when true; default: false
+layout: base            # (optional) layout file in layouts/ to use; default: value from config.yml
+---
+```
+
+All fields except `title` are optional. Unknown fields are ignored.
+
+## Release history
+
+### 0.1.0 — unreleased
+
+- Scaffold: `index`, `about`, `docs`, `changelog`, `blog/first-post` pages
+- Layout: `base.html` with Crinja template rendering support
+- Partials: `header.html`, `footer.html`
+- Assets: `assets/css/style.css` copied verbatim
+- `creestal new` — scaffold a new site
+- `creestal build` — full build with timing output
+- `creestal serve` — incremental watch-mode server with deletion handling

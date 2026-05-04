@@ -1,0 +1,23 @@
+/*
+ * assets/js/theme_controller.js
+ *
+ * This file is copied verbatim from src/assets/js/ into out/assets/js/.
+ * Creestal does not process or bundle JS — what you write here is what ships.
+ * Reference it in your layout with:
+ * <script defer src="/assets/js/theme_controller.js"></script>
+ */
+
+(function () {
+	var root = document.documentElement;
+	var btn = document.getElementById("theme-toggle");
+	var theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
+	root.setAttribute("data-bs-theme", theme);
+	if (btn) btn.textContent = theme;
+
+	if (btn) btn.addEventListener("click", function () {
+		theme = theme === "dark" ? "light" : "dark";
+		root.setAttribute("data-bs-theme", theme);
+		btn.textContent = theme;
+	});
+})();

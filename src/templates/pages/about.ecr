@@ -1,0 +1,50 @@
+---
+title: About
+date: <%= Time.local.to_s("%Y-%m-%d") %>
+layout: base
+---
+
+# About this site
+
+This is a Creestal site. It was scaffolded with `creestal new <%= @ctx.app_name %>`.
+
+## Project layout
+
+```
+<%= @ctx.app_name %>/
+  config.yml          ← site settings
+  <%= @ctx.source %>/
+    pages/            ← Markdown content, one file = one page
+    layouts/          ← HTML templates that wrap your pages
+    partials/         ← reusable HTML fragments (header, footer, …)
+    assets/           ← CSS, JS, images — copied verbatim to output
+  out/                ← generated site (gitignore this)
+```
+
+## The content model
+
+Each file in `pages/` becomes one page in the output. Pages are written in Markdown with a YAML frontmatter block at the top:
+
+```markdown
+---
+title: My page
+date: 2026-01-01
+---
+
+# My page content
+```
+
+Creestal processes the Markdown, renders the matching Crinja layout, and writes a static HTML file to `out/`.
+
+## Pages, layouts, and partials — how they connect
+
+A page declares which layout to use via the `layout` frontmatter key (defaulting to whatever is set in `config.yml`).
+
+The layout is an HTML file with Crinja expressions and include tags that tell Creestal where to put things:
+
+- `{{ page.content }}` → rendered page content goes here
+- `{% include "header.html" %}` → includes the `header.html` partial
+
+Open `layouts/base.html` right now — you will see both in action.
+
+→ Continue to [Docs](/docs)

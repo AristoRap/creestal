@@ -1,0 +1,22 @@
+name: creestal
+version: 0.1.0
+
+authors:
+  - Aristotelis Rapai <aristotelisrapai@gmail.com>
+
+targets:
+  creestal:
+    main: src/creestal.cr
+
+crystal: ">= 1.20.0"
+
+dependencies:
+  argy:
+    github: AristoRap/argy
+    branch: main
+  markd:
+    github: icyleaf/markd
+  crinja:
+    github: straight-shoota/crinja
+
+license: MIT

@@ -1,0 +1,31 @@
+---
+title: Welcome
+date: <%= Time.local.to_s("%Y-%m-%d") %>
+layout: base
+---
+
+# Welcome to <%= @ctx.app_name %>
+
+This site was generated with **Creestal** — a static site generator written in Crystal.
+
+The pages here are the scaffold itself. Each one explains a concept by being a live example of it.
+
+## Quick start
+
+```sh
+creestal new my-site   # scaffold a new site
+cd my-site
+creestal serve         # serve locally with live-reload at http://localhost:3000
+creestal build         # build into <%= @ctx.source %>/../out/
+```
+
+## Tour
+
+| Page | What it covers |
+|---|---|
+| [About](/about) | Project structure and the content model |
+| [Docs](/docs) | Layouts, partials, and the Crinja template system |
+| [Blog → First Post](/blog/first-post) | Watch mode, incremental builds, and drafts |
+| [Changelog](/changelog) | Every frontmatter field, explained |
+
+→ Continue to [About](/about)

@@ -1,0 +1,40 @@
+---
+title: First Post
+date: <%= Time.local.to_s("%Y-%m-%d") %>
+draft: true
+layout: base
+---
+
+# First Post
+
+You found this page — which means you removed `draft: true` from the frontmatter. Good.
+
+## Drafts
+
+Any page with `draft: true` is excluded from the build. It won't appear in `out/` and won't be served.
+
+Remove the field (or set it to `false`) when you're ready to publish.
+
+## Watch mode
+
+```sh
+creestal serve
+```
+
+Starts a local server and watches `<%= @ctx.source %>/` for changes. When a file is saved, only the affected page is rebuilt — not the entire site. The terminal shows:
+
+```
+File change: src/pages/blog/first-post.md | rebuilt | took 3.2ms
+```
+
+Edit this file and save it. You should see that line appear.
+
+## Incremental rebuilds
+
+Creestal watches file mtimes. On each tick it compares the current snapshot against the previous one and reports:
+
+- **new files** — added to the site
+- **modified files** — rebuilt in place
+- **deleted files** — removed from `out/` (layouts/partials block if dependents exist)
+
+→ Continue to [Changelog](/changelog)
